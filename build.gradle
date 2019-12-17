@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-apply from: file('lib_common.gradle')
-apply from: file('common.gradle')
-apply from: file('mod_common.gradle')
+apply from: file('common_gradle/lib_common.gradle')
+apply from: file('common_gradle/common.gradle')
+apply from: file('common_gradle/mod_common.gradle')
 buildscript {
     repositories {
         google()
