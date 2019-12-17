@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'com.jakewharton.butterknife'
 android {
     compileSdkVersion rootProject.android.compileSdkVersion
     buildToolsVersion rootProject.android.buildToolsVersion
@@ -13,6 +13,11 @@ android {
 
         testInstrumentationRunner this.rootProject.android.testInstrumentationRunner
         consumerProguardFiles this.rootProject.android.consumerProguardFiles
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     buildTypes {
@@ -32,4 +37,5 @@ dependencies {
     api this.rootProject.desLibs.smart_refresh_layout
     api this.rootProject.desLibs.smart_refresh_layout_header
     api this.rootProject.desLibs.constraintlayout
+    api this.rootProject.desLibs.butterknife
 }

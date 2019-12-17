@@ -1,2 +1,2 @@
-include ':app', ':lib_common', ':common', ':lib_save'
+include ':app', ':lib_common', ':common', ':lib_save', ':mod_local', ':mod_net', ':mod_me'
 rootProject.name='LovelyMusic'

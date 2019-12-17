@@ -1,15 +1,21 @@
 apply plugin: 'com.android.application'
-
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion rootProject.android.compileSdkVersion
+    buildToolsVersion rootProject.android.buildToolsVersion
+
+
     defaultConfig {
-        applicationId "com.ellen.lovelymusic"
-        minSdkVersion 16
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        minSdkVersion this.rootProject.android.minSdkVersion
+        targetSdkVersion this.rootProject.android.targetSdkVersion
+        versionCode this.rootProject.android.versionCode
+        versionName this.rootProject.android.versionName
+
+        testInstrumentationRunner this.rootProject.android.testInstrumentationRunner
+        consumerProguardFiles this.rootProject.android.consumerProguardFiles
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     buildTypes {
         release {
@@ -26,4 +32,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation project(path: ':common')
+
+    annotationProcessor this.rootProject.desLibs.butterknife_annotationProcessor
+    implementation project(path: ':mod_local')
+    implementation project(path: ':mod_me')
+    implementation project(path: ':mod_net')
 }
