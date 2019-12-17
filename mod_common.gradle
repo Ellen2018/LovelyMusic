@@ -1,0 +1,7 @@
+//这里放模块化组件的依赖配置
+ext {
+    lib_depsVersion = [
+    ]
+    lib_desLibs = [
+    ]
+}

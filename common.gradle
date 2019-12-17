@@ -1,0 +1,27 @@
+//这里放组件化第三方依赖 & 抽取一些公共配置
+ext {
+    android = [
+            applicationId:"com.ellen.lovelymusic",
+            buildToolsVersion:"29.0.2",
+            compileSdkVersion: 29,
+            minSdkVersion    : 16,
+            targetSdkVersion : 29,
+            versionCode : 1,
+            versionName : "1.0",
+            testInstrumentationRunner:"android.support.test.runner.AndroidJUnitRunner",
+            consumerProguardFiles:"consumer-rules.pro"
+    ]
+    depsVersion = [
+            appcompat_version:'1.1.0',
+            recycler_view_version:'1.0.0',
+            smart_refresh_layout_version:'1.1.0',
+            constraintlayout_version:'1.1.3'
+    ]
+    desLibs = [
+            appcompat:"androidx.appcompat:appcompat:${depsVersion.appcompat_version}",
+            constraintlayout:"androidx.constraintlayout:constraintlayout:${depsVersion.constraintlayout_version}",
+            recycler_view:"androidx.recyclerview:recyclerview:${depsVersion.recycler_view_version}",
+            smart_refresh_layout:"com.scwang.smartrefresh:SmartRefreshLayout:${depsVersion.smart_refresh_layout_version}",
+            smart_refresh_layout_header:"com.scwang.smartrefresh:SmartRefreshHeader:${depsVersion.smart_refresh_layout_version}"
+    ]
+}
