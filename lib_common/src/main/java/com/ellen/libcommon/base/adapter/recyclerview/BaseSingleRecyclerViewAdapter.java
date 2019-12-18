@@ -174,7 +174,8 @@ public abstract class BaseSingleRecyclerViewAdapter<T, VH extends BaseViewHolder
     public int getItemCount() {
         int headerItemSize = headerViewList == null ? 0 : headerViewList.size();
         int footerItemSize = footerViewList == null ? 0 : footerViewList.size();
-        return dataList.size() + headerItemSize + footerItemSize;
+        int itemSize = dataList == null ? 0 : dataList.size();
+        return itemSize + headerItemSize + footerItemSize;
     }
 
     public List<T> getDataList() {

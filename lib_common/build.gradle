@@ -38,6 +38,7 @@ dependencies {
     api this.rootProject.desLibs.smart_refresh_layout_header
     api this.rootProject.desLibs.constraintlayout
     api this.rootProject.desLibs.butterknife
+    api this.rootProject.desLibs.easy_chat
 
     //save组件依赖
     api this.rootProject.desLibs.mmkv

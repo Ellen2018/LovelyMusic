@@ -1,20 +1,24 @@
 package com.ellen.lovelymusic;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.ellen.libcommon.base.BaseActivity;
-import com.ellen.libcommon.base.adapter.viewpager.BaseFragmentPagerAdapter;
-import com.ellen.libcommon.util.ToastUtils;
+import com.ellen.libcommon.base.adapter.viewpager.SaveStatusPagerFragment;
 import com.ellen.libcommon.util.statusutil.StatusUtils;
 import com.ellen.modlocal.LocalFragment;
 import com.ellen.modme.MeFragment;
 import com.ellen.modnet.NetFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,6 +36,9 @@ public class MainActivity extends BaseActivity implements BaseActivity.ButterKni
     TextView tvMenu2;
     @BindView(R.id.tv_menu_3)
     TextView tvMenu3;
+
+    private Fragment currentFragment;
+    private List<Fragment> fragmentList;
 
     @OnClick({R.id.tv_menu_1,R.id.tv_menu_2,R.id.tv_menu_3})
     void onClick(View view){
@@ -62,12 +69,6 @@ public class MainActivity extends BaseActivity implements BaseActivity.ButterKni
 
     @Override
     protected void initView() {
-         ivLeftMenu.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 ToastUtils.toast(getContext(),"呵呵");
-             }
-         });
     }
 
     @Override
@@ -75,6 +76,10 @@ public class MainActivity extends BaseActivity implements BaseActivity.ButterKni
         tvMenu1.setText("本地");
         tvMenu2.setText("网络");
         tvMenu3.setText("我");
+        fragmentList = new ArrayList<>();
+        fragmentList.add(new LocalFragment());
+        fragmentList.add(new NetFragment());
+        fragmentList.add(new MeFragment());
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -107,29 +112,8 @@ public class MainActivity extends BaseActivity implements BaseActivity.ButterKni
 
             }
         });
-        viewPager.setAdapter(new BaseFragmentPagerAdapter(getSupportFragmentManager()) {
-            @Override
-            protected int getFragmentPagerSize() {
-                return 3;
-            }
 
-            @Override
-            protected Fragment getFragment(int position) {
-                Fragment fragment = null;
-                switch (position){
-                    case MOD_LOCAL:
-                        fragment = new LocalFragment();
-                        break;
-                    case MOD_NET:
-                        fragment = new NetFragment();
-                        break;
-                    case MOD_ME:
-                        fragment = new MeFragment();
-                        break;
-                }
-                return fragment;
-            }
-        });
+        viewPager.setAdapter(new SaveStatusPagerFragment(getActivity(),fragmentList));
         tvMenu1.setTextColor(Color.RED);
         tvMenu2.setTextColor(Color.BLACK);
         tvMenu3.setTextColor(Color.BLACK);
@@ -148,5 +132,11 @@ public class MainActivity extends BaseActivity implements BaseActivity.ButterKni
     @Override
     public void initButterKnife() {
         ButterKnife.bind(this);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        currentFragment.onRequestPermissionsResult(requestCode,permissions,grantResults);
     }
 }

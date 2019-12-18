@@ -26,8 +26,8 @@ public abstract class BaseFragment extends Fragment {
         return mContentView;
     }
 
-    protected View findViewById(int id){
-        return mContentView.findViewById(id);
+    protected <T> T findViewById(int id){
+        return (T) mContentView.findViewById(id);
     }
 
     protected String getTAG(){
