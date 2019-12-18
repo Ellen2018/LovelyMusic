@@ -1,7 +1,0 @@
-//这里放组件化第三方依赖 & 抽取一些公共配置
-ext {
-    lib_depsVersion = [
-    ]
-    lib_desLibs = [
-    ]
-}

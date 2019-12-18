@@ -12,19 +12,30 @@ ext {
             consumerProguardFiles:"consumer-rules.pro"
     ]
     depsVersion = [
+            //公共依赖
             appcompat_version:'1.1.0',
             recycler_view_version:'1.0.0',
             smart_refresh_layout_version:'1.1.0',
             constraintlayout_version:'1.1.3',
-            butterknife_version:'10.2.0'
+            butterknife_version:'10.2.0',
+
+
+            //save组件依赖
+            mmkv_version: '1.0.23',
+            dhc_sqlite_version:'1.0.4'
     ]
     desLibs = [
+            //公共依赖
             appcompat:"androidx.appcompat:appcompat:${depsVersion.appcompat_version}",
             constraintlayout:"androidx.constraintlayout:constraintlayout:${depsVersion.constraintlayout_version}",
             recycler_view:"androidx.recyclerview:recyclerview:${depsVersion.recycler_view_version}",
             smart_refresh_layout:"com.scwang.smartrefresh:SmartRefreshLayout:${depsVersion.smart_refresh_layout_version}",
             smart_refresh_layout_header:"com.scwang.smartrefresh:SmartRefreshHeader:${depsVersion.smart_refresh_layout_version}",
             butterknife:"com.jakewharton:butterknife:${depsVersion.butterknife_version}",
-            butterknife_annotationProcessor:"com.jakewharton:butterknife-compiler:${depsVersion.butterknife_version}"
+            butterknife_annotationProcessor:"com.jakewharton:butterknife-compiler:${depsVersion.butterknife_version}",
+
+            //save组件依赖
+            mmkv: "com.tencent:mmkv:${depsVersion.mmkv_version}",
+            dhc_sqlite:"com.github.Ellen2018:DhcSQLite:${depsVersion.dhc_sqlite_version}"
     ]
 }
