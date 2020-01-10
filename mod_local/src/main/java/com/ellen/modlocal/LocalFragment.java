@@ -1,22 +1,27 @@
 package com.ellen.modlocal;
 
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ellen.common.base.BaseSecondMvpFragment;
-import com.ellen.libcommon.R2;
-import com.ellen.libcommon.base.BaseFragment;
+import com.ellen.libcommon.base.adapter.recyclerview.BaseRecyclerViewAdapter;
+import com.ellen.libcommon.base.adapter.recyclerview.BaseViewHolder;
 import com.ellen.libcommon.util.ContentProviderUtils;
 import com.ellen.libcommon.util.PermissionUtils;
 import com.ellen.libcommon.util.ToastUtils;
 import com.ellen.modlocal.adapter.LocalMusicAdapter;
+import com.ellen.supermessagelibrary.MessageManager;
+import com.ellen.supermessagelibrary.SuperMessage;
 
 import java.util.List;
 
-public class LocalFragment extends BaseSecondMvpFragment<LocalPresenter> implements LocalAgreement.ALocalView, BaseFragment.LazyLoadInterface {
+public class LocalFragment extends BaseSecondMvpFragment<LocalPresenter> implements LocalAgreement.ALocalView {
 
     private RecyclerView recyclerView;
 
@@ -72,25 +77,25 @@ public class LocalFragment extends BaseSecondMvpFragment<LocalPresenter> impleme
             //对比数据是否有变化，有变化则刷新
         }else {
             localMusicAdapter = new LocalMusicAdapter(getActivity(), musicList);
+            localMusicAdapter.setOnItemClickListener(new BaseRecyclerViewAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(BaseViewHolder baseViewHolder, int position) {
+                    SuperMessage superMessage = new SuperMessage("play");
+                    superMessage.object = localMusicAdapter.getDataList();
+                    superMessage.what = position;
+                    MessageManager.getInstance().sendMessage(superMessage);
+                }
+            });
+            View view = LayoutInflater.from(getActivity()).inflate(R.layout.header_view,null);
+            localMusicAdapter.addHeaderView(view);
             recyclerView.setAdapter(localMusicAdapter);
             isRefresh = true;
         }
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-        Log.e("Ellen2018","执行了onPause");
-    }
-
-    @Override
     public void getLocalMusicFailure(String errMessage) {
         ToastUtils.toast(getActivity(),"加载本地音乐数据失败:"+errMessage);
-
     }
 
-    @Override
-    public void lazyLoad() {
-
-    }
 }

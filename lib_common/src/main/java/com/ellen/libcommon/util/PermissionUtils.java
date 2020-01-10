@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -98,6 +99,7 @@ public class PermissionUtils {
            }
            if(sum == this.permissionList.size()){
                //成功
+               Log.e("Ellen2018","成功获取了权限");
                permissionCallback.success();
            }else {
                //失败
@@ -109,8 +111,8 @@ public class PermissionUtils {
     //检测文件读写权限
     public void startCheckFileReadWritePermission(int requestCode,PermissionCallback permissionCallback){
         List<String> permissionList = new ArrayList<>();
-        permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
         permissionList.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+        permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
         checkPermissions(permissionList,requestCode,permissionCallback);
     }
 

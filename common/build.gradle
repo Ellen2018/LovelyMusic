@@ -33,4 +33,5 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     api project(path: ':lib_save')
+    api project(path: ':lib_media_play')
 }

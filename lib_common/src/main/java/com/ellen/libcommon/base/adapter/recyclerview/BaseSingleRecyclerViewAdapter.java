@@ -36,6 +36,11 @@ public abstract class BaseSingleRecyclerViewAdapter<T, VH extends BaseViewHolder
         this.refreshLoadMoreCallback = refreshLoadMoreCallback;
     }
 
+    public void setDataList(List<T> dataList){
+        this.dataList = dataList;
+        notifyDataSetChanged();
+    }
+
     @Override
     public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);

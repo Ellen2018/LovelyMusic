@@ -1,4 +1,5 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
+
 android {
     compileSdkVersion rootProject.android.compileSdkVersion
     buildToolsVersion rootProject.android.buildToolsVersion
@@ -13,29 +14,27 @@ android {
         testInstrumentationRunner this.rootProject.android.testInstrumentationRunner
         consumerProguardFiles this.rootProject.android.consumerProguardFiles
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation project(path: ':common')
-
-    annotationProcessor this.rootProject.desLibs.butterknife_annotationProcessor
-    implementation project(path: ':mod_local')
-    implementation project(path: ':mod_me')
-    implementation project(path: ':mod_net')
-    implementation 'com.google.android.exoplayer:exoplayer:2.9.0'
+    implementation project(path: ':lib_common')
 }

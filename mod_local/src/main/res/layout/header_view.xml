@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_local_all_music"
+        android:layout_width="match_parent"
+        android:text="本地音乐"
+        android:layout_marginLeft="20dp"
+        android:gravity="center_vertical"
+        android:layout_height="100dp"/>
+
+    <TextView
+        android:id="@+id/tv_local_near_music"
+        android:layout_width="match_parent"
+        android:text="最近播放"
+        android:layout_marginLeft="20dp"
+        android:gravity="center_vertical"
+        android:layout_height="100dp"/>
+
+</LinearLayout>

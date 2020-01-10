@@ -8,26 +8,33 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-public class SaveStatusPagerFragment extends FragmentPagerAdapter {
+/**
+ * 用于ViewPager的适配器，用于保存Fragment的状态，系统原生的做不到
+ */
+public class SaveStatusFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private List<Fragment> fragmentList;
     private WeakReference<AppCompatActivity> activityWeakReference;
+    private ViewPager viewPager;
 
-    public SaveStatusPagerFragment(AppCompatActivity appCompatActivity,List<Fragment> fragmentPagerAdapterList){
+    public SaveStatusFragmentPagerAdapter(ViewPager viewPager,AppCompatActivity appCompatActivity, List<Fragment> fragmentPagerAdapterList){
         super(appCompatActivity.getSupportFragmentManager());
         this.activityWeakReference = new WeakReference<>(appCompatActivity);
         this.fragmentList = fragmentPagerAdapterList;
+        this.viewPager = viewPager;
+        this.viewPager.setAdapter(this);
     }
 
-    private SaveStatusPagerFragment(@NonNull FragmentManager fm) {
+    private SaveStatusFragmentPagerAdapter(@NonNull FragmentManager fm) {
         super(fm);
     }
 
-    private SaveStatusPagerFragment(@NonNull FragmentManager fm, int behavior) {
+    private SaveStatusFragmentPagerAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
     }
 

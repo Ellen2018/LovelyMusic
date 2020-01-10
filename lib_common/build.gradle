@@ -39,6 +39,7 @@ dependencies {
     api this.rootProject.desLibs.constraintlayout
     api this.rootProject.desLibs.butterknife
     api this.rootProject.desLibs.easy_chat
+    api this.rootProject.desLibs.supermessage
 
     //save组件依赖
     api this.rootProject.desLibs.mmkv

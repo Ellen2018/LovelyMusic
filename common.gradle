@@ -19,6 +19,7 @@ ext {
             constraintlayout_version:'1.1.3',
             butterknife_version:'10.2.0',
             easy_chat_version:'1.0.5',
+            super_message_version:'1.0.0',
 
 
             //save组件依赖
@@ -35,6 +36,7 @@ ext {
             butterknife:"com.jakewharton:butterknife:${depsVersion.butterknife_version}",
             butterknife_annotationProcessor:"com.jakewharton:butterknife-compiler:${depsVersion.butterknife_version}",
             easy_chat:"com.github.Ellen2018:EasyChat:${depsVersion.easy_chat_version}",
+            supermessage:"com.github.Ellen2018:SuperMessage:${depsVersion.super_message_version}",
 
             //save组件依赖
             mmkv: "com.tencent:mmkv:${depsVersion.mmkv_version}",
